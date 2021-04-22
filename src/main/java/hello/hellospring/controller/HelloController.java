@@ -20,6 +20,7 @@ public class HelloController {
         return "hello-template"; // templates에 있는 hello-template.html 실행
     }
 
+
     @GetMapping("hello-string")
     @ResponseBody // http body. 적용후 소스코드 보면 body만 있다.(쓸일이 별로 없음)
     public String helloString(@RequestParam("name") String name){
