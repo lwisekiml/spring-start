@@ -4,14 +4,15 @@ import hello.hellospring.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
-@Controller // @Controller가 있으면 MemberController 객체를 생성하여 스프링 컨테이너에 등록하여 스프링이 관리
 /*
+(1) 컴포넌트 스캔과 자동 의존관계 설정 - @controller @service @repository 사용한 방식(@Component가 안에 있다.)
 controller를 통해 외부 요청을 받고
 service에서 비지니스 로직을 만들고
 repository에서 데이터 저장
 
 스프링이 뜰때 위 3개를 가지고 올라옴
 */
+@Controller // @Controller가 있으면 MemberController 객체를 생성하여 스프링 컨테이너에 등록하여 스프링이 관리
 public class MemberController {
 
 //    private final MemberService memberService = new MemberService();
