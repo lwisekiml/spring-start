@@ -1,8 +1,11 @@
 package hello.hellospring.controller;
 
+import hello.hellospring.domain.Member;
 import hello.hellospring.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 /*
 (1) 컴포넌트 스캔과 자동 의존관계 설정 - @controller @service @repository 사용한 방식(@Component가 안에 있다.)
@@ -28,5 +31,22 @@ public class MemberController {
     // MemberService는 순수한 자바 클래스. 스프링이 알 수 있는 방법이 없다. 그래서 @Service, @Repository 로 등록하여 사용
     public MemberController(MemberService memberService) {
         this.memberService = memberService;
+    }
+
+
+    @GetMapping("/members/new") // url창에 타이핑
+    public String createForm() {
+        return "members/createMemberForm";
+    }
+
+    @PostMapping("/members/new")
+    public String create(MemberForm form) {
+        Member member = new Member();
+        member.setName(form.getName());
+
+//        System.out.println("member = " + member.getName());
+        memberService.join(member);
+
+        return "redirect:/";
     }
 }
