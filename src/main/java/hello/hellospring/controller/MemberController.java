@@ -4,8 +4,11 @@ import hello.hellospring.domain.Member;
 import hello.hellospring.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import java.util.List;
 
 /*
 (1) 컴포넌트 스캔과 자동 의존관계 설정 - @controller @service @repository 사용한 방식(@Component가 안에 있다.)
@@ -33,7 +36,6 @@ public class MemberController {
         this.memberService = memberService;
     }
 
-
     @GetMapping("/members/new") // url창에 타이핑
     public String createForm() {
         return "members/createMemberForm";
@@ -48,5 +50,12 @@ public class MemberController {
         memberService.join(member);
 
         return "redirect:/";
+    }
+
+    @GetMapping("/members")
+    public String list(Model model) {
+        List<Member> members = memberService.findMember();
+        model.addAttribute("members", members);
+        return "members/memberList";
     }
 }
