@@ -1,0 +1,31 @@
+package hello.hellospring.controller;
+
+import hello.hellospring.service.MemberService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
+@Controller // @Controller가 있으면 MemberController 객체를 생성하여 스프링 컨테이너에 등록하여 스프링이 관리
+/*
+controller를 통해 외부 요청을 받고
+service에서 비지니스 로직을 만들고
+repository에서 데이터 저장
+
+스프링이 뜰때 위 3개를 가지고 올라옴
+*/
+public class MemberController {
+
+//    private final MemberService memberService = new MemberService();
+    // 스프링이 관리를 하게 되면 다 스프링컨테이너에 등록을 하고 컨테이너에서 받아서 쓰도록 바꾸어야 한다.
+    // 다른 곳에서도 MemberService를 가져다 쓸수 있다. new로 계속 객체를 생성함
+    // 별 기능이 없고 여러개의 인스턴스를 생성할 필요가 없다.
+    // 하나만 생성해서 쓰면 됨
+    // 스프링 컨테이너에 하나만 등록
+    private final MemberService memberService;
+
+    @Autowired //스프링이 스프링 컨테이너에 있는 memberService를 가져다가 연결
+    // 'hello.hellospring.service.MemberService' that could not be found. 라고 뜸
+    // MemberService는 순수한 자바 클래스. 스프링이 알 수 있는 방법이 없다. 그래서 @Service, @Repository 로 등록하여 사용
+    public MemberController(MemberService memberService) {
+        this.memberService = memberService;
+    }
+}
