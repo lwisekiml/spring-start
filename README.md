@@ -36,4 +36,20 @@ MemberForm에 name이 setting
 
 (setName이 자동 실행 되어 저장 되는것 같음)
 
+## 스프링 DB 접근 기술 : H2 데이터베이스 설치
+https://www.h2database.com
+다운로드 및 설치(All Platforme 다운)
+
+h2 데이터베이스 버전은 스프링 부트 버전에 맞춘다.
+
+권한 주기: chmod 755 h2.sh (윈도우 사용자는 x)
+실행: ./h2.sh (윈도우 사용자는 ./h2.bat)
+
+안될 경우 앞부분 IP를 localhost로 변경(ex: localhost:8082....)
+
+데이터베이스 파일 생성 방법
+1) jdbc:h2:~/test (최초 한번 접속/자동입력 되어있다.)
+2) ~/test.mv.db 파일 생성 확인
+3) 이후부터는 JDBC URL을 jdbc:h2:tcp://localhost/~/test 로 바꿔서 접속
+
 
