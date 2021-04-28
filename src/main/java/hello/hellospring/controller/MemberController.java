@@ -34,6 +34,9 @@ public class MemberController {
     // MemberService는 순수한 자바 클래스. 스프링이 알 수 있는 방법이 없다. 그래서 @Service, @Repository 로 등록하여 사용
     public MemberController(MemberService memberService) {
         this.memberService = memberService;
+        System.out.println("memberService = " + memberService.getClass());
+        // 아래와 같이 MemberService 뒤에 다른 것이 있다. memberService를 가지고 복제를 하는 것
+        // memberService = class hello.hellospring.service.MemberService$$EnhancerBySpringCGLIB$$be580b1e
     }
 
     @GetMapping("/members/new") // url창에 타이핑
