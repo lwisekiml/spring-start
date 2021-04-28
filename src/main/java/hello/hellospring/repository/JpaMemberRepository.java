@@ -8,8 +8,6 @@ import java.util.Optional;
 public class JpaMemberRepository implements MemberRepository{
 
     private final EntityManager em;
-    // jpa는 EntityManager로 모든것을 함
-    // 스프링부트가 자동으로 EntityManager를 생성(디비랑 연결해서 자동으로 만들어줌)
 
     public JpaMemberRepository(EntityManager em) {
         this.em = em;
@@ -39,8 +37,5 @@ public class JpaMemberRepository implements MemberRepository{
     public List<Member> findAll() {
         return em.createQuery("select m from Member m", Member.class)
                 .getResultList();
-//        List<Member> result = em.createQuery("select m from Member m", Member.class)
-//                .getResultList();
-//        return result;
     }
 }

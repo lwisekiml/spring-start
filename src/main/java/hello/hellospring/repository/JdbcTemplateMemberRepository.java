@@ -22,7 +22,7 @@ public class JdbcTemplateMemberRepository implements MemberRepository{
     }
 
     @Override
-    public Member save(Member member) { // insert문
+    public Member save(Member member) {
         SimpleJdbcInsert jdbcInsert = new SimpleJdbcInsert(jdbcTemplate);
         jdbcInsert.withTableName("member").usingGeneratedKeyColumns("id");
 
@@ -58,15 +58,5 @@ public class JdbcTemplateMemberRepository implements MemberRepository{
             member.setName(rs.getString("name"));
             return member;
         };
-
-//        return new RowMapper<Member>() {
-//            @Override
-//            public Member mapRow(ResultSet rs, int rowNum) throws SQLException {
-//                Member member = new Member();
-//                member.setId(rs.getLong("id"));
-//                member.setName(rs.getString("name"));
-//                return member;
-//            }
-//        }
     }
 }

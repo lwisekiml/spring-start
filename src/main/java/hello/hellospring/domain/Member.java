@@ -2,10 +2,10 @@ package hello.hellospring.domain;
 
 import javax.persistence.*;
 
-@Entity // JPA가 관리하는 Entity
+@Entity
 public class Member {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY) // Id부분을 알아서 생성
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     private String name;
